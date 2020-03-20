@@ -1,12 +1,18 @@
 import React from "react";
-import "./App.css";
-//import Clock from "./Clock.js";
-import FormContainer from "../src/Components/Form/component/FormContainer";
+// import Clock from "./Clock.js";
+// import Form from "./Form";
+// import FormContainer from "../src/Components/Form/component/FormContainer";
+import APIContainer from "./Components/API/component/APIContainer";
 
 function App() {
   return (
     <div>
-      <FormContainer />
+      {/* From redux */}
+      {/* <FormContainer /> */}
+      <APIContainer />
+      {/* From react */}
+      {/* <Clock /> */}
+      {/* <Form /> */}
     </div>
   );
 }

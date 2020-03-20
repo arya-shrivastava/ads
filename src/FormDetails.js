@@ -7,8 +7,6 @@ const FormDetails = props => (
         <tr>
           <td>Name</td>
           <td>City</td>
-          <td>Edit</td>
-          <td>Delete</td>
         </tr>
       </thead>
       <tbody>

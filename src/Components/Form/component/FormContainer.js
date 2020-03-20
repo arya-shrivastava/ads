@@ -12,13 +12,11 @@ class FormContainer extends React.Component {
       name: "",
       city: ""
     };
-    this.changeHandleName = this.changeHandleName.bind(this);
-    this.submitHandle = this.submitHandle.bind(this);
   }
 
-  changeHandleName(event) {
+  changeHandleName = event => {
     this.setState({ name: event.target.value });
-  }
+  };
   changeHandleCity = event => {
     this.setState({ city: event.target.value });
   };
@@ -30,9 +28,6 @@ class FormContainer extends React.Component {
       city: selectedUser.city,
       id: selectedUser.id
     });
-    const { name, city } = this.state;
-    const user = { name, city, id };
-    //this.props.editUser(user);
   };
 
   onDelete = id => {
@@ -41,9 +36,9 @@ class FormContainer extends React.Component {
     this.props.deleteUser(user);
   };
 
-  submitHandle(event) {
+  submitHandle = event => {
     event.preventDefault();
-    const { name, city, id, users } = this.state;
+    const { name, city, id } = this.state;
     if (id === undefined) {
       const user = { name, city, id: Math.random() };
       this.props.addUser(user);
@@ -56,9 +51,9 @@ class FormContainer extends React.Component {
       this.props.editUser(user);
       this.setState({ id: undefined, name: "", city: "" });
     }
-  }
+  };
+
   render() {
-    console.log(this.props.users);
     return (
       <div>
         <FormRenderer

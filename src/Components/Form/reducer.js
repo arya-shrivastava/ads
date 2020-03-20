@@ -3,13 +3,10 @@ const formReducer = (state = [], action) => {
     case "ADD_USER":
       return [...state, action.payload];
     case "EDIT_USER":
-      const id = action.payload.id;
-      const name = action.payload.name;
-      const city = action.payload.city;
       const updatedUsers = state.map(each => {
-        if (each.id === id) {
-          each.name = name;
-          each.city = city;
+        if (each.id === action.payload.id) {
+          each.name = action.payload.name;
+          each.city = action.payload.city;
         }
         return each;
       });
@@ -17,7 +14,6 @@ const formReducer = (state = [], action) => {
     case "DELETE_USER":
       const deletedUser = state.filter(each => each.id !== action.payload.id);
       return deletedUser;
-
     default:
       return state;
   }

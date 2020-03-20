@@ -74,18 +74,14 @@ class Form extends React.Component {
               onChange={this.handleChange}
             />
           </label>
-          <br />
-          <br />
           <label>
-            City: &nbsp; &nbsp;
+            City:
             <input
               type="text"
               value={this.state.city}
               onChange={this.handleChangeCity}
             />
           </label>
-          <br />
-          <br />
           <input type="submit" value="Submit" />
         </form>
         {this.state.users && (
