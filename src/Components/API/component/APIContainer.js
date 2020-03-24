@@ -1,5 +1,3 @@
-//  9810129269
-
 import React, { useState } from "react";
 import axios from "axios";
 import { getApiData } from "../selector";
