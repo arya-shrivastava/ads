@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { getApiData } from "../selector";
 import { apiDatas, employeeEdit, employeeDelete, employeeAdd } from "../action";
@@ -6,11 +6,11 @@ import { connect } from "react-redux";
 import APIDetails from "./APIDetails";
 import APIRenderer from "./APIRenderer";
 import DemoHook from "./DemoHook";
+import { BrowserRouter as Router } from "react-router-dom";
 
 export class APIContainer extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       apiData: [],
       employee_id: "",
@@ -52,15 +52,16 @@ export class APIContainer extends React.Component {
 
   onEditApi = id => {
     //hooks
+
     //this.hooks_API.apidatashowValue(false);
     //this.hooks_API.formnameValue("Edit Form")
 
     //this.setState({ apidatashow: false, formname: "Edit Form" });
-    // alert(this.state.apidatashow);
-    // const selectedEmployee1 = this.props.apiData.find(each => each.id === id);
-    // const employee_name1 = selectedEmployee1.employee_name;
-    // const employee_salary1 = selectedEmployee1.employee_salary;
-    // const employee_age1 = selectedEmployee1.employee_age;
+    //alert(this.state.apidatashow);
+    //const selectedEmployee1 = this.props.apiData.find(each => each.id === id);
+    //const employee_name1 = selectedEmployee1.employee_name;
+    //const employee_salary1 = selectedEmployee1.employee_salary;
+    //const employee_age1 = selectedEmployee1.employee_age;
     // axios
     //   .put(
     //     `http://dummy.restapiexample.com/api/v1/update/` +
@@ -245,31 +246,39 @@ export class APIContainer extends React.Component {
   };
 
   render() {
+    console.log(this.hooks_API.apidatashow);
     return (
-      <div>
-        <DemoHook />
-        <input type="button" onClick={this.addEmployee} value="Add Employee" />
-        {this.state.apidatashow === true ? (
-          <APIDetails
-            apiData={this.props.apiData}
-            onEditApi={this.onEditApi}
-            onDeleteApi={this.onDeleteApi}
-            onShowDetailsApi={this.onShowDetailsApi}
+      <Router>
+        <div>
+          <DemoHook />
+          <input
+            type="button"
+            onClick={this.addEmployee}
+            value="Add Employee"
           />
-        ) : (
-          <APIRenderer
-            submitHandle={this.submitHandle}
-            backButton={this.backButton}
-            changeHandleName={this.changeHandleName}
-            changeHandleSalary={this.changeHandleSalary}
-            changeHandleAge={this.changeHandleAge}
-            employee_name={this.state.employee_name}
-            employee_salary={this.state.employee_salary}
-            employee_age={this.state.employee_age}
-            formname={this.state.formname}
-          />
-        )}
-      </div>
+
+          {this.state.apidatashow === true ? (
+            <APIDetails
+              apiData={this.props.apiData}
+              onEditApi={this.onEditApi}
+              onDeleteApi={this.onDeleteApi}
+              onShowDetailsApi={this.onShowDetailsApi}
+            />
+          ) : (
+            <APIRenderer
+              submitHandle={this.submitHandle}
+              backButton={this.backButton}
+              changeHandleName={this.changeHandleName}
+              changeHandleSalary={this.changeHandleSalary}
+              changeHandleAge={this.changeHandleAge}
+              employee_name={this.state.employee_name}
+              employee_salary={this.state.employee_salary}
+              employee_age={this.state.employee_age}
+              formname={this.state.formname}
+            />
+          )}
+        </div>
+      </Router>
     );
   }
 }

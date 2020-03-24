@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, BrowserRouter as Router } from "react-router-dom";
 
 const APIDetails = props => {
   return (
@@ -14,11 +15,13 @@ const APIDetails = props => {
         <tbody>
           {props.apiData.map(each => (
             <tr key={each.id}>
-              <td>
-                <a onClick={() => props.onShowDetailsApi(each.id)}>
-                  {each.employee_name}
-                </a>
-              </td>
+              <Link to={`/g/${each.id}`}>
+                <td>
+                  <a onClick={() => props.onShowDetailsApi(each.id)}>
+                    {each.employee_name}
+                  </a>
+                </td>
+              </Link>
               <td>
                 <button onClick={() => props.onEditApi(each.id)}>Edit</button>
               </td>
