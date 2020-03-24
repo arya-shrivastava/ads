@@ -1,4 +1,6 @@
-import React from "react";
+//  9810129269
+
+import React, { useState } from "react";
 import axios from "axios";
 import { getApiData } from "../selector";
 import { apiDatas, employeeEdit, employeeDelete, employeeAdd } from "../action";
@@ -6,9 +8,20 @@ import { connect } from "react-redux";
 import APIDetails from "./APIDetails";
 import APIRenderer from "./APIRenderer";
 import DemoHook from "./DemoHook";
+
+function Hooks_API() {
+  const [apidatashow, apidatashowValue] = useState(true);
+  const [employee_id, employee_id_value] = useState("");
+  const [employee_name, employee_name_value] = useState("");
+  const [employee_salary, employee_salary_value] = useState("");
+  const [employee_age, employee_age_value] = useState("");
+  const [formname, formnameValue] = useState("");
+}
+
 export class APIContainer extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       apiData: [],
       employee_id: "",
@@ -16,8 +29,8 @@ export class APIContainer extends React.Component {
       employee_salary: "",
       employee_age: "",
       eData: [],
-      apidatashow: true,
-      formname: ""
+      formname: "",
+      apidatashow: true
     };
   }
 
@@ -40,6 +53,11 @@ export class APIContainer extends React.Component {
   };
 
   onEditApi = id => {
+    //hooks
+
+    //this.apidatashowValue(false);
+    //this.formnameValue("Edit Form")
+
     this.setState({ apidatashow: false, formname: "Edit Form" });
     // alert(this.state.apidatashow);
     // const selectedEmployee1 = this.props.apiData.find(each => each.id === id);
@@ -77,6 +95,14 @@ export class APIContainer extends React.Component {
     */
 
     const selectedEmployee = this.props.apiData.find(each => each.id === id);
+    //this.employee_id_value(selectedEmployee.id);
+
+    //hooks
+
+    //this.employee_id_value(selectedEmployee.id);
+    //this.employee_name_value(selectedEmployee.employee_name);
+    //this.employee_salary_value(selectedEmployee.employee_salary);
+    //this.employee_age_value(selectedEmployee.employee_age);
 
     this.setState({
       employee_id: selectedEmployee.id,
@@ -91,7 +117,7 @@ export class APIContainer extends React.Component {
     const employee_age = selectedEmployee.employee_age;
     const eData = { employee_id, employee_name, employee_salary, employee_age };
 
-    this.props.employeeEdit(eData);
+    this.props.employeeEdit(eData); //useredit
   };
 
   onShowDetailsApi = id => {
@@ -126,6 +152,7 @@ export class APIContainer extends React.Component {
     }
     
     */
+
     const selectedEmployee = this.props.apiData.find(each => each.id === id);
     const employee_id = selectedEmployee.id;
     const employee_name = selectedEmployee.employee_name;
@@ -137,10 +164,23 @@ export class APIContainer extends React.Component {
   };
 
   backButton = () => {
+    //hooks
+
+    //this.apidatashowValue(true);
+
     this.setState({ apidatashow: true });
   };
 
   addEmployee = () => {
+    // hooks
+
+    //this.apidatashowValue(false);
+    //this.employee_id_value(undefined)
+    //thhis.employee_name_value("");
+    //thhis.employee_salary_value("");
+    //tis.employee_age_value("");
+    //this.formnameValue("Add Employee Form");
+
     this.setState({
       apidatashow: false,
       employee_id: undefined,
@@ -167,6 +207,14 @@ export class APIContainer extends React.Component {
         id: Math.random()
       };
       this.props.employeeAdd(newEmployee);
+
+      //hooks
+
+      //this.employee_name_value("");
+      //this.employee_salary_value("");
+      //this.employee_age_value("");
+      //this.employee_id_value(undefined);
+
       this.setState({
         employee_name: "",
         employee_salary: "",
@@ -174,6 +222,11 @@ export class APIContainer extends React.Component {
         employee_id: undefined
       });
       alert("New employee added!!!");
+
+      //hooks
+
+      //this.apidatashowValue(true);
+
       this.setState({ apidatashow: true });
     } else {
       const employeeData = {
@@ -184,6 +237,11 @@ export class APIContainer extends React.Component {
       };
       this.props.employeeEdit(employeeData);
       alert("Employee Details Updated!!!");
+
+      //hooks
+
+      //this.apidatashowValue(false);
+
       this.setState({ apidatashow: false });
     }
   };
