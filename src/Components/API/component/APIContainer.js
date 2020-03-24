@@ -9,15 +9,6 @@ import APIDetails from "./APIDetails";
 import APIRenderer from "./APIRenderer";
 import DemoHook from "./DemoHook";
 
-function Hooks_API() {
-  const [apidatashow, apidatashowValue] = useState(true);
-  const [employee_id, employee_id_value] = useState("");
-  const [employee_name, employee_name_value] = useState("");
-  const [employee_salary, employee_salary_value] = useState("");
-  const [employee_age, employee_age_value] = useState("");
-  const [formname, formnameValue] = useState("");
-}
-
 export class APIContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -33,6 +24,15 @@ export class APIContainer extends React.Component {
       apidatashow: true
     };
   }
+
+  hooks_API = () => {
+    const [apidatashow, apidatashowValue] = useState(true);
+    const [employee_id, employee_id_value] = useState("");
+    const [employee_name, employee_name_value] = useState("");
+    const [employee_salary, employee_salary_value] = useState("");
+    const [employee_age, employee_age_value] = useState("");
+    const [formname, formnameValue] = useState("");
+  };
 
   componentDidMount() {
     axios.get(`http://dummy.restapiexample.com/api/v1/employees`).then(res => {
@@ -54,11 +54,10 @@ export class APIContainer extends React.Component {
 
   onEditApi = id => {
     //hooks
+    //this.hooks_API.apidatashowValue(false);
+    //this.hooks_API.formnameValue("Edit Form")
 
-    //this.apidatashowValue(false);
-    //this.formnameValue("Edit Form")
-
-    this.setState({ apidatashow: false, formname: "Edit Form" });
+    //this.setState({ apidatashow: false, formname: "Edit Form" });
     // alert(this.state.apidatashow);
     // const selectedEmployee1 = this.props.apiData.find(each => each.id === id);
     // const employee_name1 = selectedEmployee1.employee_name;
@@ -235,6 +234,7 @@ export class APIContainer extends React.Component {
         employee_salary,
         employee_age
       };
+
       this.props.employeeEdit(employeeData);
       alert("Employee Details Updated!!!");
 
