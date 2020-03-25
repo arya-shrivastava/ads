@@ -1,7 +1,7 @@
 import React from "react";
-// import Clock from "./Clock.js";
-// import Form from "./Form";
-// import FormContainer from "../src/Components/Form/component/FormContainer";
+import StudentList from "./Components/StudentAPI/component/StudentList";
+import AddStudent from "./Components/StudentAPI/component/AddStudent";
+import { StudentProvider } from "./Components/StudentAPI/component/StudentContext";
 import APIContainer from "./Components/API/component/APIContainer";
 import Details from "./Components/API/component/Details";
 import Nav from "./Components/API/component/nav";
@@ -16,6 +16,10 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/details" component={Details} />
           <Route path="/apidata" component={APIContainer} />
+          <StudentProvider>
+            <AddStudent />
+            <Route path="/studentapi" component={StudentList} />
+          </StudentProvider>
         </Switch>
       </div>
     </Router>
