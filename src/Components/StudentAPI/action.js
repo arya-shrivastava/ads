@@ -1,6 +1,6 @@
-export const studentAdd = data => {
+export const apiDatas = data => {
   return {
-    type: "STUDENT_ADD",
+    type: "API_DATA",
     payload: data
   };
 };

@@ -1,10 +1,10 @@
-const studentApiDataReducer = (state = [], action) => {
+const apiDataReducer = (state = [], action) => {
   switch (action.type) {
-    case "EMPLOYEE_ADD":
-      return [...state, action.payload];
+    case "API_DATA":
+      return action.payload;
     default:
       return state;
   }
 };
 
-export default studentApiDataReducer;
+export default apiDataReducer;
