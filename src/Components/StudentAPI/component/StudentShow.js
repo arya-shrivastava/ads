@@ -14,7 +14,7 @@ const StudentShow = props => {
           </tr>
         </thead>
         {props.apiData.map(each => (
-          <tr key={each.id}>
+          <tr key={each.studentId}>
             <td>{each.studentId}</td>
             <td>{each.name}</td>
             <td>{each.address}</td>
