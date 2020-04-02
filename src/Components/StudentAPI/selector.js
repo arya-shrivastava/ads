@@ -1,3 +1,3 @@
-export const getApiData = state => {
-  return state.apiData;
+export const getstudentApiData = state => {
+  return state.studentApiData;
 };
